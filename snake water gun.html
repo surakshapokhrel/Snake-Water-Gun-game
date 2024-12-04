@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+// use js to create a game of snake water and gun.The game shoukd ask you to enter S,W or G.The computer should be able to randomly generate S,W or G and declare win or loss using alert.use confirm and prompt wherever required.
+function getComputerChoice(){
+    const choices=['S','W','G'];
+    const randomIndex = Math.floor(Math.random() * 3); 
+
+    return choices[randomIndex];
+}
+
+function determineWinner(playerChoice,computerChoice){
+    if(playerChoice===computerChoice){
+return "It's a tie!"
+    }
+    else if(
+        (playerChoice==='S' && computerChoice==='W')||
+        (playerChoice==='W' && computerChoice==='G')||
+        (playerChoice==='G'&&computerChoice==='S')
+    ){
+        return "you win!"
+    }
+    else{
+        return "you lose"
+    }
+
+}
+
+let playAgain = true;
+while(playAgain){
+    const playerChoice = prompt("Enter your choice (S for Snake, W for Water, G for Gun):").toUpperCase();
+    if (!['S', 'W', 'G'].includes(playerChoice)) {
+    alert("Invalid input! Please enter S, W, or G.");
+    continue;
+  }
+  const computerChoice = getComputerChoice();
+  alert(`Computer chose: ${computerChoice}`);
+  
+  const result = determineWinner(playerChoice, computerChoice);
+  alert(result);
+  
+  playAgain = confirm("Do you want to play again?");
+  }
+  alert("Thanks for playing!");
+
+
+   </script> 
+</body>
+</html>
